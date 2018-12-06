@@ -1,7 +1,5 @@
 # ignore the following directories
 LWJGL/
-Simple-Car/.metadata
 
 # ignore compiled files
 *.class
-
