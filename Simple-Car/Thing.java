@@ -22,7 +22,15 @@ public class Thing {
    private int turnRate; // the rate at which the thing is turning
 
    /**
-    * Thing constructor
+    * Thing constructor - takes input from a file and constructs thing
+    *      input format: 
+    *            kind
+    *            texture name
+    *            initial position x y z
+    *            initial angle
+    *            initial speed
+    *            initial turn rate
+    *            width length height
     * @param input  input from file
     */
    public Thing(Scanner input)
@@ -53,61 +61,195 @@ public class Thing {
         modelTris.add( new Triangle( texture, 
                        new Vertex( -w, -l, -h, 0, 0 ),
                        new Vertex( w, -l, -h, 1, 0 ),
-                       new Vertex( w, -l, h, 1, 1 )    ) );
+                       new Vertex( w, -l, h, 1, 1)));
         modelTris.add( new Triangle( texture, 
                        new Vertex( -w, -l, -h, 0, 0 ),
                        new Vertex( w, -l, h, 1, 1 ),
-                       new Vertex( -w, -l, h, 0, 1 )    ) );
+                       new Vertex( -w, -l, h, 0, 1)));
         // right face
         modelTris.add( new Triangle( texture, 
                        new Vertex( w, -l, -h, 0, 0 ),
                        new Vertex( w, l, -h, 1, 0 ),
-                       new Vertex( w, l, h, 1, 1 )    ) );
+                       new Vertex( w, l, h, 1, 1)));
         modelTris.add( new Triangle( texture, 
                        new Vertex( w, -l, -h, 0, 0 ),
                        new Vertex( w, l, h, 1, 1 ),
-                       new Vertex( w, -l, h, 0, 1 )    ) );
+                       new Vertex( w, -l, h, 0, 1)));
         // back face
         modelTris.add( new Triangle( texture, 
                        new Vertex( w, l, -h, 0, 0 ),
                        new Vertex( -w, l, -h, 1, 0 ),
-                       new Vertex( -w, l, h, 1, 1 )    ) );
+                       new Vertex( -w, l, h, 1, 1)));
         modelTris.add( new Triangle( texture, 
                        new Vertex( w, l, -h, 0, 0 ),
                        new Vertex( -w, l, h, 1, 1 ),
-                       new Vertex( w, l, h, 0, 1 )    ) );
+                       new Vertex( w, l, h, 0, 1)));
         // left face
         modelTris.add( new Triangle( texture, 
                        new Vertex( -w, l, -h, 0, 0 ),
                        new Vertex( -w, -l, -h, 1, 0 ),
-                       new Vertex( -w, -l, h, 1, 1 )    ) );
+                       new Vertex( -w, -l, h, 1, 1)));
         modelTris.add( new Triangle( texture, 
                        new Vertex( -w, l, -h, 0, 0 ),
                        new Vertex( -w, -l, h, 1, 1 ),
-                       new Vertex( -w, l, h, 0, 1 )    ) );
+                       new Vertex( -w, l, h, 0, 1)));
         // top face
         modelTris.add( new Triangle( texture, 
                        new Vertex( -w, -l, h, 0, 0 ),
                        new Vertex( w, -l, h, 1, 0 ),
-                       new Vertex( w, l, h, 1, 1 )    ) );
+                       new Vertex( w, l, h, 1, 1)));
         modelTris.add( new Triangle( texture, 
                        new Vertex( -w, -l, h, 0, 0 ),
                        new Vertex( w, l, h, 1, 1 ),
-                       new Vertex( -w, l, h, 0, 1 )    ) );
+                       new Vertex( -w, l, h, 0, 1)));;
         // bottom face
         modelTris.add( new Triangle( texture, 
                        new Vertex( -w, l, -h, 0, 0 ),
                        new Vertex( w, l, -h, 1, 0 ),
-                       new Vertex( w, -l, -h, 1, 1 )    ) );
+                       new Vertex( w, -l, -h, 1, 1)));
         modelTris.add( new Triangle( texture, 
                        new Vertex( -w, l, -h, 0, 0 ),
                        new Vertex( w, -l, -h, 1, 1 ),
-                       new Vertex( -w, -l, -h, 0, 1 )    ) );
+                       new Vertex( -w, -l, -h, 0, 1)));
       }
+      else if(kind.equals("hexagonal-bipyramid"))
+      {
+        // get dimensions
+        double w = input.nextDouble() /2;  // along x
+        double l = input.nextDouble() /2;  // along y
+        double h = input.nextDouble() /2;  // along z
+        input.nextLine();
+        modelTris = new ArrayList<Triangle>();
+        // top hexagonal-pyramid
+        modelTris.add( new Triangle( texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(w, 0, 0, 1, 0),
+                       new Vertex(h/2, l, 0, 1, 1)));
+        modelTris.add( new Triangle( texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(h/2, l, 0, 1, 0),
+                       new Vertex(-h/2, l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(-h/2, l, 0, 1,0),
+                       new Vertex(-w, 0, 0, 1, 1)));
+        modelTris.add( new Triangle( texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(-w, 0, 0, 1, 0),
+                       new Vertex(-h/2, -l, 0, 1, 1)));
+        modelTris.add( new Triangle( texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(-h/2, -l, 0, 1, 0),
+                       new Vertex(h/2, -l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(h/2, -l, 0, 1, 0),
+                       new Vertex(w, 0, 0, 1, 1)));
+        // bottom hexagonal-pyramid
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(w, 0, 0, 1, 0),
+                       new Vertex(h/2, l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(h/2, l, 0, 1, 0),
+                       new Vertex(-h/2, l, 0, 1, 1)));
+        modelTris.add( new Triangle( texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(-h/2, l, 0, 1, 0),
+                       new Vertex(-w, 0, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(-w, 0, 0, 1, 0),
+                       new Vertex(-h/2, -l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(-h/2, -l, 0, 1, 0),
+                       new Vertex(h/2, -l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(h/2, -l, 0, 1, 0),
+                       new Vertex(w, 0, 0, 1, 1)));
+      }
+      else if(kind.equals("octagonal-bipyramid"))
+      {
+        // get dimensions
+        double w = input.nextDouble() /2;  // along x
+        double l = input.nextDouble() /2;  // along y
+        double h = input.nextDouble() /2;  // along z
+        input.nextLine();
+        modelTris = new ArrayList<Triangle>();
+        // top octagonal-pyramid
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(w, 0, 0, 1, 0),
+                       new Vertex(0.75*w, 0.75*l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(0.75*w, 0.75*l, 0, 1, 0),
+                       new Vertex(0, l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(0, l, 0, 1, 0),
+                       new Vertex(-0.75*w, 0.75*l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(-0.75*w, 0.75*l, 0, 1, 0),
+                       new Vertex(-w, 0, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(-w, 0, 0, 1, 0),
+                       new Vertex(-0.75*w, -0.75*l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(-0.75*w, -0.75*l, 0, 1, 0),
+                       new Vertex(0, -l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(0, -l, 0, 1, 0),
+                       new Vertex(0.75*w, -0.75*l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, h, 0, 0),
+                       new Vertex(0.75*w, -0.75*l, 0, 1, 0),
+                       new Vertex(w, 0, 0, 1, 1)));
+        // bottom octagonal-pyramid
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(w, 0, 0, 1, 0),
+                       new Vertex(0.75*w, 0.75*l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(0.75*w, 0.75*l, 0, 1, 0),
+                       new Vertex(0, l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(0, l, 0, 1, 0),
+                       new Vertex(-0.75*w, 0.75*l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(-0.75*w, 0.75*l, 0, 1, 0),
+                       new Vertex(-w, 0, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(-w, 0, 0, 1, 0),
+                       new Vertex(-0.75*w, -0.75*l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(-0.75*w, -0.75*l, 0, 1, 0),
+                       new Vertex(0, -l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(0, -l, 0, 1, 0),
+                       new Vertex(0.75*w, -0.75*l, 0, 1, 1)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0, -h, 0, 0),
+                       new Vertex(0.75*w, -0.75*l, 0, 1, 0),
+                       new Vertex(w, 0, 0, 1, 1)));
+      } 
       else if(kind.equals("car"))
       {}
-      else if(kind.equals("spinner"))
-      {} 
+      
+      
   } // Thing constructor
 
   /**
@@ -120,25 +262,25 @@ public class Thing {
 
   /**
    * sendTriangles
+   * @param tris list of triangles that make up this thing
    */
-  public void sendTriangles( TriList tris )
+  public void sendTriangles(TriList tris)
   {
 
     // create rotation and translation matrices
-    Mat4 rotate = Mat4.rotate(0,0,1, angle ); // about z axis
-
+    Mat4 rotate = Mat4.rotate(0,0,1, angle); // about z axis
     /*  // check correctness
     Mat4 rotT = rotate.transpose();
     Mat4 prod = rotate.mult(rotT);
     System.out.println("this should be I:\n" + prod );
     */
-    Mat4 translate = Mat4.translate( position );
+    Mat4 translate = Mat4.translate(position);
     // combine for efficiency and convenience
-    Mat4 transform = translate.mult( rotate );
+    Mat4 transform = translate.mult(rotate);
     for (int k=0; k<modelTris.size(); k++)
     {
       // add transformed triangle to list
-      tris.add( modelTris.get(k).transform( transform ) );
+      tris.add(modelTris.get(k).transform(transform));
     }   
   }
 
@@ -161,7 +303,7 @@ public class Thing {
     }
     // update the position
     double ang = Math.toRadians(angle);
-    Triple v = new Triple( Math.cos(ang), Math.sin(ang), 0 ).mult( speed );
-    position = position.add( v );
+    Triple v = new Triple( Math.cos(ang), Math.sin(ang), 0).mult(speed);
+    position = position.add(v);
   }
 }

@@ -63,7 +63,7 @@ public class Ex9 extends Basic
       things = new ArrayList<Thing>();
       for (int k=0; k<number; k++) 
       {
-        things.add( new Thing( input ) );           
+        things.add(new Thing(input));           
       }
         input.close();
     }
