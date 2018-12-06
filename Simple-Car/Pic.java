@@ -7,10 +7,8 @@ import java.io.*;
 import java.util.*;
 import java.awt.*;
 import java.awt.image.*;
-
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-
 import org.lwjgl.opengl.*;
 
 class Pic
@@ -18,13 +16,12 @@ class Pic
   private String name;  // name of this image within the program
   private int index;    // position in list of all Pic's of this image
   private int textureId;
-
   private int numRows, numCols;  // image size
   private ByteBuffer data;  // pixels extracted into rgba
 
   // construct this pic from raw image file
   // with given name
-  public Pic( String picName, String fileName )
+  public Pic(String picName, String fileName)
   {
     name = picName;
 
