@@ -1,9 +1,11 @@
-/*  this class should be extended to provide
-    an event-driven, graphical application
+/** Basic.java
 
-   The extending class should have its own constructor
-   where things can be set up before the window is prepared,
-   with a call to super( window title, width in pixels, height in pixels,
+  This class should be extended to provide
+  an event-driven, graphical application
+
+  The extending class should have its own constructor
+  where things can be set up before the window is prepared,
+  with a call to super( window title, width in pixels, height in pixels,
                           nanoseconds in a step )
 
    Override these methods:
@@ -26,9 +28,7 @@
 
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
- 
 import java.nio.ByteBuffer;
- 
 import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -36,92 +36,95 @@ import static org.lwjgl.opengl.GL21.*;
 import static org.lwjgl.opengl.GL33.*;
 import static org.lwjgl.system.MemoryUtil.*;
  
-public class Basic{
- 
-  // We need to strongly reference callback instances.
+public class Basic
+{
   private GLFWKeyCallback keyCallback;
   private GLFWCursorPosCallback cursorPosCallback;
   private GLFWMouseButtonCallback mouseButtonCallback;
- 
-  // The window handle
-  private long window;
-
+  private long window; // window handle
   private String title;
   private int width, height;
   private int stepNumber;
-  private long timeStep;   // amount of time in a step in nanoseconds
-
+  private long timeStep; // amount of time in a step in nanoseconds
   private long startTime;
- 
   private int mouseX, mouseY;  // current mouse cursor position
+  private final static int NUMDELAYSPERYIELD = 5;  // hope not important
 
+  /**
+   * Basic constructor - create window with given title, width, height, and step time
+   *         in nanosecons
+   * @param windowLabel  the title of the window
+   * @param pw  width of window in pixels
+   * @param ph  height of window in pixels
+   * @param timeInNanos  step time in nanoseconds
+   */
   // create window given title, size in pixels, step time in nanoseconds
   public Basic( String windowLabel, int pw, int ph, long timeInNanos )
   {
     title = windowLabel;
     width = pw;  height = ph;
     stepNumber = 0;
-
     timeStep = timeInNanos;
     startTime = System.nanoTime();
   }
 
+  /**
+   * start - startup code
+   */
   public void start()
   {
-    try{
+    try
+    {
       setup();   // get window ready to go
       loop();
- 
       // Release window and window callbacks
       glfwFreeCallbacks(window);
       glfwDestroyWindow(window);
-
-    } finally {
+    } 
+    finally 
+    {
       // Terminate GLFW
       glfwTerminate();
     }
   }
  
+  /**
+   * setup - initialization and setup code
+   */
   private void setup()
   {
     // Initialize GLFW. Most GLFW functions will not work before doing this.
-    if( !glfwInit() )
+    if(!glfwInit())
+    {
       throw new IllegalStateException("Unable to initialize GLFW");
- 
-// Note:  these 4 hints seem necessary (at least on my Mac) to
-//        get OpenGL version 3.3, but may cause problems in Windows
-//--------------------------------------------------
+    }
+    // Note:  these 4 hints seem necessary (at least on my Mac) to
+    //        get OpenGL version 3.3, but may cause problems in Windows
+    //--------------------------------------------------
     // Configure the window, choosing OpenGL version
     // and the core profile and forward compatibility
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-//--------------------------------------------------
-
+    //--------------------------------------------------
     glfwWindowHint(GLFW_VISIBLE, 0 ); // the window will stay hidden after creation
     glfwWindowHint(GLFW_RESIZABLE, 0 ); // the window will not be resizable
-
     // Get the usable resolution of the primary monitor
     /*  could use this to detect full screen size on any monitor
     ByteBuffer vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
     width = GLFWvidmode.width(vidmode);
     height = GLFWvidmode.height(vidmode) - 120; // avoid the dock at the bottom
     */
-
     // Create the window
     window = glfwCreateWindow(width, height, title, NULL, NULL);
-    if( window == NULL )
+    if(window == NULL)
       throw new RuntimeException("Failed to create the GLFW window");
-
     // Set up a key callback. 
     // It will be called every time a key is pressed, repeated or released.
-    glfwSetKeyCallback(window, 
-      keyCallback = new GLFWKeyCallback() 
+    glfwSetKeyCallback(window, keyCallback = new GLFWKeyCallback() 
       {
-        public void invoke(long window, int key, 
-                           int scancode, int action, 
-                           int mods)
+        public void invoke(long window, int key, int scancode, int action, int mods)
         {
           // whenever a key is pressed, the callback function
           // puts it in the InputInfo queue for processing later in an app
@@ -129,11 +132,9 @@ public class Basic{
         }
       }
     );
-
-    glfwSetCursorPosCallback( window,
-       cursorPosCallback = new GLFWCursorPosCallback()
+    glfwSetCursorPosCallback(window, cursorPosCallback = new GLFWCursorPosCallback()
        {
-         public void invoke(long window, double xpos, double ypos )
+         public void invoke(long window, double xpos, double ypos)
          {
            // whenever cursor moves, add input info
            InputInfo.add( new InputInfo( 'm', (int) Math.round(xpos),
@@ -141,35 +142,28 @@ public class Basic{
          }
        }
      );
- 
-    glfwSetMouseButtonCallback( window,
-       mouseButtonCallback = new GLFWMouseButtonCallback()
+    glfwSetMouseButtonCallback(window, mouseButtonCallback = new GLFWMouseButtonCallback()
        {
          public void invoke(long window, int button, int action, int mods )
          {
            // whenever mouse button is pressed, released, or repeated, make input info
-           InputInfo.add( new InputInfo( 'b', button, action, mods ) );
+           InputInfo.add(new InputInfo('b', button, action, mods));
          }
        }
     );
-
-    glfwSetWindowPos( window, 0, 35 );
- 
+    glfwSetWindowPos(window, 0, 35);
     // Make the OpenGL context current
     glfwMakeContextCurrent(window);
-
     // Enable v-sync
     glfwSwapInterval(1);
-
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL );
-
     // Make the window visible
     glfwShowWindow(window);
-
   }
  
-  private final static int NUMDELAYSPERYIELD = 5;  // hope not important
-
+  /**
+   * loop -
+   */
   private void loop()
   {
     // This line is critical for LWJGL's interoperation with GLFW's
@@ -177,42 +171,31 @@ public class Basic{
     // LWJGL detects the context that is current in the current thread,
     // creates the ContextCapabilities instance and makes the OpenGL
     // bindings available for use.
-//    GLContext.createFromCurrent();
-
+  //GLContext.createFromCurrent();
     GL.createCapabilities();
- 
-    // show version information
-    System.out.println("OpenGL vendor: " + glGetString( GL_RENDERER ) );
-    System.out.println("OpenGL version: " + glGetString( GL_VERSION ) );
-    System.out.println("GLSL version: " + 
-                         glGetString( GL20.GL_SHADING_LANGUAGE_VERSION ) );
-
+     // show version information
+    System.out.println("OpenGL vendor: " + glGetString(GL_RENDERER));
+    System.out.println("OpenGL version: " + glGetString(GL_VERSION));
+    System.out.println("GLSL version: " + glGetString(GL20.GL_SHADING_LANGUAGE_VERSION));
     init();
-
     // Run the rendering loop until the window wants to close
     long prevTime = System.nanoTime();
     long overTime = 0L;
-
     int numDelays = 0;
-
-    while( ! glfwWindowShouldClose(window) )
+    while(!glfwWindowShouldClose(window))
     {
       stepNumber++;
-
       display();
       processInputs();
       update();
-
       long currentTime = System.nanoTime();
-
       // figure time spent on this step already in nanoseconds
       long elapsedTime = currentTime - prevTime;
-
       long sleepTime = timeStep - elapsedTime - overTime;
-
-      if( sleepTime > 0 )
-      {// have some time to sleep
-        try{
+      if(sleepTime > 0)
+      { // have some time to sleep
+        try
+        {
           Thread.sleep( sleepTime/1000000L ); // sleep this many milliseconds
         }
         catch(InterruptedException ie)
@@ -222,65 +205,92 @@ public class Basic{
         overTime = prevTime - currentTime - sleepTime;
       }
       else
-      {// step took longer than timeStep
+      { // step took longer than timeStep
         overTime = 0L;
         prevTime = System.nanoTime();
         numDelays++;
 
-        if( numDelays >= NUMDELAYSPERYIELD )
-        {// give another thread a chance
+        if(numDelays >= NUMDELAYSPERYIELD)
+        { // give another thread a chance
           Thread.yield();
           numDelays = 0;
         }
       }
-      
       glfwSwapBuffers(window); // swap the color buffers
- 
       // Poll for window events. The key callback above will only be
       // invoked during this call.
       glfwPollEvents();
     }
   }
  
-  // ---------------------- methods that can be called in app  -------
+  // ---------------------- Public Methods  -------------------------
 
+  /**
+   * getStepNumber - get step number
+   * @return stepNumber  step number
+   */
   public int getStepNumber()
   {
     return stepNumber;
   }
 
-  // return time from start of application
-  // in milliseconds
+  /**
+   * getTime - return time from start of application in milliseconds
+   * @return  time from start of application in ms
+   */
   public long getTime()
   {
     return (System.nanoTime() - startTime) / 1000000L;
   }
 
+  /**
+   * getTimeStep - get time step
+   * @return  time step
+   */
   public double getTimeStep()
   {
     return timeStep/1e9;  //convert from nanoseconds to seconds
   }
 
+  /**
+   * restartStepNumbering - reset step number to 0
+   */
   public void restartStepNumbering()
   {
     stepNumber = 0;
   }
 
+  /**
+   * getMouseX - get position of mouse cursor on x-axis
+   * @return mouseX  x position of mouse cursor
+   */
   public int getMouseX()
   {
     return mouseX;
   }
 
+  /**
+   * getMouseY - get position of mouse cursor on y-axis
+   * @return mouseY  y position of mouse cursor
+   */
   public int getMouseY()
   {
     return mouseY;
   }
 
+  /**
+   * getPixelWidth - get pixel width
+   * @return width  pixel width
+   */
   public int getPixelWidth()
   {
     return width;
   }
 
+  /**
+   * getPixelWidth - get pixel width
+   * @return height  pixel height
+   */
   public int getPixelHeight()
   {
     return height;
@@ -288,12 +298,18 @@ public class Basic{
 
   // ---------------------- methods that can and should be overridden -------
 
+  /**
+   * init - initialization
+   */
   protected void init()
   {
     // Set the clear color once and for all
     glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
   }
 
+  /**
+   * processInputs - process user inputs
+   */
   protected void processInputs()
   {
     while( InputInfo.size() > 0 )
@@ -301,13 +317,17 @@ public class Basic{
       InputInfo info = InputInfo.get();
       System.out.println( info );
     }
-    
   }
 
+  /**
+   * update - update the scene
+   */
   protected void update()
-  {
-  }
+  {}
 
+  /**
+   * display - display the scene
+   */
   protected void display()
   {
     // clear the framebuffer
@@ -316,10 +336,12 @@ public class Basic{
     System.out.println("Step " + getStepNumber() );
   }
 
+  /**
+   * main - main method
+   */
   public static void main(String[] args)
   {
     Basic t = new Basic( "Basic App (should be extended)", 800, 600, 33333333L );
     t.start();
   }
- 
 }
