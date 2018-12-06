@@ -153,7 +153,7 @@ public class Basic{
        }
     );
 
-    glfwSetWindowPos( window, 0, 0 );
+    glfwSetWindowPos( window, 0, 35 );
  
     // Make the OpenGL context current
     glfwMakeContextCurrent(window);
