@@ -1,4 +1,5 @@
 9     					number of things in the scene
+2						number of routes in the scene
 
 box 					0 - the grass covered ground
 grass
@@ -69,5 +70,17 @@ triangle_blue
 50 50 3
 0
 0
-0
+1
 14 6 6
+
+4						route 1
+25 25 3
+25 75 3
+75 75 3
+75 25 3
+
+4						route 2
+12 12 3
+12 88 3
+88 88 3
+88 12 3
