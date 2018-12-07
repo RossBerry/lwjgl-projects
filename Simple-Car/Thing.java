@@ -247,7 +247,175 @@ public class Thing {
                        new Vertex(w, 0, 0, 1, 0)));
       } 
       else if(kind.equals("car"))
-      {}
+      {
+        // get dimensions
+        double w = input.nextDouble() /2;  // along x
+        double l = input.nextDouble() /2;  // along y
+        double h = input.nextDouble() /2;  // along z
+        input.nextLine();
+        modelTris = new ArrayList<Triangle>();
+        // top
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-w, 0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(0.57*w, -0.5*l, 0, 0.5*h, 0, 0),
+                       new Vertex(0.57*w, 0.5*l, 0, 0.5*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.57*w, 0.5*l, 0, 0.5*h, 0.5, 1),
+                       new Vertex(w, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(-w, 0.5*l, 0.17*h, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.57*w, -0.5*l, 0, 0.5*h, 0.5, 1),
+                       new Vertex(-0.29*w, -0.5*l, 0.5*h, 0, 0),
+                       new Vertex(-0.29*w, 0.5*l, 0.5*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-0.29*w, 0.5*l, 0.5*h, 0.5, 1),
+                       new Vertex(0.57*w, 0.5*l, 0, 0.5*h, 0, 0),
+                       new Vertex(0.57*w, -0.5*l, 0, 0.5*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-0.29*w, -0.5*l, 0.5*h, 0.5, 1),
+                       new Vertex(0, -0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0, 0.5*l, 0.17*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(-0.29*w, 0.5*l, 0.5*h, 0, 0),
+                       new Vertex(-0.29*w, -0.5*l, 0.5*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, -0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(0.43*w, -0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0.43*w, 0.5*l, 0.17*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.43*w, 0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(0, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0, -0.5*l, 0.17*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.43*w, -0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(w, -0.5*l, 0, 0, 0),
+                       new Vertex(w, 0.5*l, 0, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(w, 0.5*l, 0, 0.5, 1),
+                       new Vertex(0.43*w, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0.43*w, -0.5*l, 0.17*h, 1, 0)));
+        // front
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(w, -0.5*l, 0, 0.5, 1),
+                       new Vertex(w, -0.5*l, 0.17*h, 0, 0),
+                       new Vertex(w, 0.5*l, -0.17*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(w, 0.5*l, -0.17*h, 0.5, 1),
+                       new Vertex(w, 0.5*l, 0, 0, 0),
+                       new Vertex(w, -0.5*l, 0, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(w, -0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(0.43*w, -0.5*l, -0.5*h, 0, 0),
+                       new Vertex(0.43*w, 0.5*l, -0.5*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.43*w, 0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(w, 0.5*l, -0.17*h, 0, 0),
+                       new Vertex(w, -0.5*l, 0.17*h, 1, 0)));
+        // bottom
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-w, -0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(0.43*w, -0.5*l, -0.5*h, 0, 0),
+                       new Vertex(0.43*w, 0.5*l, -0.5*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.43*w, 0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(-w, 0.5*l, -0.5*h, 0, 0),
+                       new Vertex(-w, -0.5*l, -0.5*h, 1, 0)));
+        // back
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(w, 0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(-w, 0.5*l, -0.5*h, 0, 0),
+                       new Vertex(-w, -0.5*l, -0.5*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-w, -0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(-w, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(w, 0.5*l, 0.17*h, 1, 0)));
+        // right
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-w, -0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(-0.57*w, -0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0.57*w, -0.5*l, 0, 0.5*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.57*w, -0.5*l, 0, 0.5*h, 0.5, 1),
+                       new Vertex(-w, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(-w, -0.5*l, -0.5*h, 1, 0)));
+
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-0.57*w, -0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(0, -0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0, -0.5*l, 0.17*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, -0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(0.57*w, -0.5*l, 0, 0.5*h, 0, 0),
+                       new Vertex(-0.57*w, -0.5*l, 0.17*h, 1, 0)));
+
+
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-w, -0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(0.43*w, -0.5*l, -0.5*h, 0, 0),
+                       new Vertex(0, -0.5*l, 0.17*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, -0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(-0.57*w, -0.5*l, 0.17*h, 0, 0),
+                       new Vertex(-w, -0.5*l, -0.5*h, 1, 0)));
+
+
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.43*w, -0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(0.43*w, -0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0, -0.5*l, 0.17*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.43*w, -0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(w, -0.5*l, 0.17*h, 0, 0),
+                       new Vertex(w, -0.5*l, 0, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(w, -0.5*l, 0, 0.5, 1),
+                       new Vertex(0.43*w, -0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0.43*w, -0.5*l, -0.5*h, 1, 0)));
+        // left
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-w, 0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(-0.57*w, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0.57*w, 0.5*l, 0, 0.5*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.57*w, 0.5*l, 0, 0.5*h, 0.5, 1),
+                       new Vertex(w, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(-w, 0.5*l, -0.5*h, 1, 0)));
+
+
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-0.57*w, 0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(0, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(-0.29*w, 0.5*l, 0.5*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-0.29*w, 0.5*l, 0.5*h, 0.5, 1),
+                       new Vertex(0.57*w, 0.5*l, 0, 0.5*h, 0, 0),
+                       new Vertex(-0.57*w, 0.5*l, 0.17*h, 1, 0)));
+
+
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(-w, 0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(0.43*w, 0.5*l, -0.5*h, 0, 0),
+                       new Vertex(0, 0.5*l, 0.17*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0, 0.5*l, 0.17*h, 0.5, 1),
+                       new Vertex(-0.57*w, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(-w, 0.5*l, -0.5*h, 1, 0)));
+
+
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.43*w, 0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(0.43*w, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0, 0.5*l, 0.17*h, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(0.43*w, 0.5*l, -0.5*h, 0.5, 1),
+                       new Vertex(w, 0.5*l, -0.17*h, 0, 0),
+                       new Vertex(w, 0.5*l, 0, 1, 0)));
+        modelTris.add( new Triangle(texture, 
+                       new Vertex(w, 0.5*l, 0, 0.5, 1),
+                       new Vertex(0.43*w, 0.5*l, 0.17*h, 0, 0),
+                       new Vertex(0.43*w, 0.5*l, -0.5*h, 1, 0)));
+      }
       
       
   } // Thing constructor
