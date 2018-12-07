@@ -327,6 +327,9 @@ class Pic
     // texture 3:
     addTexture( "kitten" );
 
+    // texture 3:
+    addTexture( "triangle_blue" );
+
   }
 
   private static void addTexture( String name ) {

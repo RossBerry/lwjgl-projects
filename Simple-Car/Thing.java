@@ -181,70 +181,70 @@ public class Thing {
         modelTris = new ArrayList<Triangle>();
         // top octagonal-pyramid
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(w, 0, 0, 1, 0),
-                       new Vertex(0.75*w, 0.75*l, 0, 1, 1)));
+                       new Vertex(0, 0, h, 0.5, 1),
+                       new Vertex(w, 0, 0, 0, 0),
+                       new Vertex(0.75*w, 0.75*l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(0.75*w, 0.75*l, 0, 1, 0),
-                       new Vertex(0, l, 0, 1, 1)));
+                       new Vertex(0, 0, h, 0.5, 1),
+                       new Vertex(0.75*w, 0.75*l, 0, 0, 0),
+                       new Vertex(0, l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(0, l, 0, 1, 0),
-                       new Vertex(-0.75*w, 0.75*l, 0, 1, 1)));
+                       new Vertex(0, 0, h, 0.5, 1),
+                       new Vertex(0, l, 0, 0, 0),
+                       new Vertex(-0.75*w, 0.75*l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(-0.75*w, 0.75*l, 0, 1, 0),
-                       new Vertex(-w, 0, 0, 1, 1)));
+                       new Vertex(0, 0, h, 0.5, 1),
+                       new Vertex(-0.75*w, 0.75*l, 0, 0, 0),
+                       new Vertex(-w, 0, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(-w, 0, 0, 1, 0),
-                       new Vertex(-0.75*w, -0.75*l, 0, 1, 1)));
+                       new Vertex(0, 0, h, 0.5, 1),
+                       new Vertex(-w, 0, 0, 0, 0),
+                       new Vertex(-0.75*w, -0.75*l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(-0.75*w, -0.75*l, 0, 1, 0),
-                       new Vertex(0, -l, 0, 1, 1)));
+                       new Vertex(0, 0, h, 0.5, 1),
+                       new Vertex(-0.75*w, -0.75*l, 0, 0, 0),
+                       new Vertex(0, -l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(0, -l, 0, 1, 0),
-                       new Vertex(0.75*w, -0.75*l, 0, 1, 1)));
+                       new Vertex(0, 0, h, 0.5, 1),
+                       new Vertex(0, -l, 0, 0, 0),
+                       new Vertex(0.75*w, -0.75*l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(0.75*w, -0.75*l, 0, 1, 0),
-                       new Vertex(w, 0, 0, 1, 1)));
+                       new Vertex(0, 0, h, 0.5, 1),
+                       new Vertex(0.75*w, -0.75*l, 0, 0, 0),
+                       new Vertex(w, 0, 0, 1, 0)));
         // bottom octagonal-pyramid
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(w, 0, 0, 1, 0),
-                       new Vertex(0.75*w, 0.75*l, 0, 1, 1)));
+                       new Vertex(0, 0, -h, 0.5, 1),
+                       new Vertex(w, 0, 0, 0, 0),
+                       new Vertex(0.75*w, 0.75*l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(0.75*w, 0.75*l, 0, 1, 0),
-                       new Vertex(0, l, 0, 1, 1)));
+                       new Vertex(0, 0, -h, 0.5, 1),
+                       new Vertex(0.75*w, 0.75*l, 0, 0, 0),
+                       new Vertex(0, l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(0, l, 0, 1, 0),
-                       new Vertex(-0.75*w, 0.75*l, 0, 1, 1)));
+                       new Vertex(0, 0, -h, 0.5, 1),
+                       new Vertex(0, l, 0, 0, 0),
+                       new Vertex(-0.75*w, 0.75*l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(-0.75*w, 0.75*l, 0, 1, 0),
-                       new Vertex(-w, 0, 0, 1, 1)));
+                       new Vertex(0, 0, -h, 0.5, 1),
+                       new Vertex(-0.75*w, 0.75*l, 0, 0, 0),
+                       new Vertex(-w, 0, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(-w, 0, 0, 1, 0),
-                       new Vertex(-0.75*w, -0.75*l, 0, 1, 1)));
+                       new Vertex(0, 0, -h, 0.5, 1),
+                       new Vertex(-w, 0, 0, 0, 0),
+                       new Vertex(-0.75*w, -0.75*l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(-0.75*w, -0.75*l, 0, 1, 0),
-                       new Vertex(0, -l, 0, 1, 1)));
+                       new Vertex(0, 0, -h, 0.5, 1),
+                       new Vertex(-0.75*w, -0.75*l, 0, 0, 0),
+                       new Vertex(0, -l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(0, -l, 0, 1, 0),
-                       new Vertex(0.75*w, -0.75*l, 0, 1, 1)));
+                       new Vertex(0, 0, -h, 0.5, 1),
+                       new Vertex(0, -l, 0, 0, 0),
+                       new Vertex(0.75*w, -0.75*l, 0, 1, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(0.75*w, -0.75*l, 0, 1, 0),
-                       new Vertex(w, 0, 0, 1, 1)));
+                       new Vertex(0, 0, -h, 0.5, 1),
+                       new Vertex(0.75*w, -0.75*l, 0, 0, 0),
+                       new Vertex(w, 0, 0, 1, 0)));
       } 
       else if(kind.equals("car"))
       {}
