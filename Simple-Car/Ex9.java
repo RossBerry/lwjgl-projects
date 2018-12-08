@@ -239,10 +239,11 @@ public class Ex9 extends Basic
       System.out.println("update things # " + k + " with id " + things.get(k).getId());
       if (routeId > 0)
       {
-        System.out.println("----------------> thing is on route " + routeId);
-
         Thing routedThing = things.get(k);
         int i = routeId - 1;
+        System.out.println("----------------> thing is on route " + routeId);
+        System.out.println("----------------> next waypoint in thing's route is "
+                           + routedThing.getNextWaypoint());
         double wX = routes.get(i).getWaypoints()[routedThing.getNextWaypoint()][0];
         double wY = routes.get(i).getWaypoints()[routedThing.getNextWaypoint()][1];
         double wZ = routes.get(i).getWaypoints()[routedThing.getNextWaypoint()][2];
@@ -253,7 +254,7 @@ public class Ex9 extends Basic
               routes.get(i).getWaypoints()[routedThing.getNextWaypoint()][3]))
         {
           routedThing.setNextWaypoint(routedThing.getNextWaypoint() + 1);
-          if (routedThing.getNextWaypoint() > routes.get(i).getWaypointCount())
+          if (routedThing.getNextWaypoint() > routes.get(i).getWaypointCount() - 1)
           {
             routedThing.setNextWaypoint(0);
           }
