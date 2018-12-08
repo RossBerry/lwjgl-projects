@@ -82,7 +82,7 @@ public class Ex9 extends Basic
       System.exit(1);
     }
     // place camera somewhere at start
-    camera = new Camera(-.1, .1, -.1, .1, 0.5, 300, new Triple(50,50,30), 90, -30); 
+    camera = new Camera(-.1, .1, -.1, .1, 0.5, 300, new Triple(50,25,3), 90, 0); 
   }
 
   /**
@@ -235,7 +235,34 @@ public class Ex9 extends Basic
     // give each thing a chance to update itself
     for (int k=0; k<things.size(); k++)
     {
+      int routeId = things.get(k).getRouteId();
       System.out.println("update things # " + k + " with id " + things.get(k).getId());
+      if (routeId > 0)
+      {
+        System.out.println("----------------> thing is on route " + routeId);
+
+        Thing routedThing = things.get(k);
+        int i = routeId - 1;
+        double wX = routes.get(i).getWaypoints()[routedThing.getNextWaypoint()][0];
+        double wY = routes.get(i).getWaypoints()[routedThing.getNextWaypoint()][1];
+        double wZ = routes.get(i).getWaypoints()[routedThing.getNextWaypoint()][2];
+        Triple waypoint = new Triple(wX, wY, wZ);
+
+        if (things.get(k).moveToWaypoint(
+              waypoint, 
+              routes.get(i).getWaypoints()[routedThing.getNextWaypoint()][3]))
+        {
+          routedThing.setNextWaypoint(routedThing.getNextWaypoint() + 1);
+          if (routedThing.getNextWaypoint() > routes.get(i).getWaypointCount())
+          {
+            routedThing.setNextWaypoint(0);
+          }
+        }
+      }
+      else
+      {
+        System.out.println("----------------> thing has no route");
+      }
       things.get(k).update();
     }
   }

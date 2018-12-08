@@ -6,6 +6,7 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.Math;
 
 public class Thing {
 
@@ -16,10 +17,13 @@ public class Thing {
    private int id;  // unique id for each Thing for debugging
    private String kind; // the kind of thing
    private ArrayList<Triangle> modelTris; // the model triangles for this thing
-   private int angle; // how much this thing is turned
+   private double angle; // how much this thing is turned
    private Triple position; // where the thing is
    private int speed; // multiple of the speed unit
    private int turnRate; // the rate at which the thing is turning
+   private int routeId; // route this thing follows
+   private Double[] route;
+   private int nextWaypoint;
 
    /**
     * Thing constructor - takes input from a file and constructs thing
@@ -48,6 +52,8 @@ public class Thing {
       angle = input.nextInt(); input.nextLine();
       speed = input.nextInt(); input.nextLine();
       turnRate = input.nextInt(); input.nextLine();
+      routeId = input.nextInt(); input.nextLine();
+      nextWaypoint = 0;
       // build tris from kind and other info
       if (kind.equals("box"))
       {
@@ -246,7 +252,7 @@ public class Thing {
                        new Vertex(0.75*w, -0.75*l, 0, 0, 0),
                        new Vertex(w, 0, 0, 1, 0)));
       } 
-      else if(kind.equals("autonomous-car"))
+      else if(kind.equals("car"))
       {
         // get dimensions
         double w = input.nextDouble() /2;  // along x
@@ -321,12 +327,39 @@ public class Thing {
   }
 
   /**
+   * getRouteId
+   * @return the route id of this Thing
+   */
+  public int getRouteId()
+  {
+     return routeId;
+  }
+
+  /**
    * getKind
    * @return the kind of this Thing
    */
   public String getKind()
   {
      return kind;
+  }
+
+  /**
+   * getNextWaypoint
+   * @return the next waypoint index of this Thing's route
+   */
+  public int getNextWaypoint()
+  {
+    return nextWaypoint;
+  }
+
+  /**
+   * setNextWaypoint
+   * @param waypoint the new next waypoint for this Thing
+   */
+  public void setNextWaypoint(int waypoint)
+  {
+    nextWaypoint = waypoint;
   }
 
   /**
@@ -353,6 +386,37 @@ public class Thing {
     }   
   }
 
+
+/**
+   * moveToWaypoint - move the thing to the next waypoint
+   */
+  public boolean moveToWaypoint(Triple waypoint, double waypointAngle )
+  {
+    Triple d = waypoint.minus(position);
+    double dist = Math.sqrt(Math.pow(d.x, 2) + Math.pow(d.y, 2) + Math.pow(d.z, 2));
+    if (dist <= speed || dist <= 2*speed)
+    {
+      if (Math.abs(waypointAngle - angle) >= turnRate)
+      {
+        int turnDirection = (int)((waypointAngle - angle) / (waypointAngle - angle));
+        angle += turnRate * turnDirection;
+        return false;
+      }
+      else
+      {
+        angle = waypointAngle;
+        return true;
+      }
+    }
+    else
+    {
+      // update the position
+      double ang = Math.toRadians(angle);
+      Triple v = new Triple( Math.cos(ang), Math.sin(ang), 0).mult(speed);
+      position = position.add(v);
+      return false;
+    }
+  }
   /**
    * update - update physical state of this thing
    *          using its speed and turnRate
@@ -370,10 +434,9 @@ public class Thing {
     {
       angle -= 360;
     }
-
     // update the position
-    double ang = Math.toRadians(angle);
-    Triple v = new Triple( Math.cos(ang), Math.sin(ang), 0).mult(speed);
-    position = position.add(v); 
+    //double ang = Math.toRadians(angle);
+    //Triple v = new Triple( Math.cos(ang), Math.sin(ang), 0).mult(speed);
+    //position = position.add(v); 
   }
 }

@@ -16,7 +16,7 @@ public class Route
    private static int maxId = 0;
    private int id; // unique id for each Route
    private int waypointCount; // the number of waypoints in the Route
-   private Double[][] waypoints; // a 2d array of waypoints in the Route
+   private double[][] waypoints; // a 2d array of waypoints in the Route
    
    /**
     * Thing constructor - takes input from a file and constructs thing
@@ -35,7 +35,7 @@ public class Route
       	System.out.println("loading route: " + id);
       	waypointCount = input.nextInt(); input.nextLine();
       	System.out.println("route " + id + " has " + waypointCount + " waypoints");
-      	waypoints = new Double[waypointCount][4];
+      	waypoints = new double[waypointCount][4];
       	for (int w=0; w < waypointCount; w++)
       	{
       		double x = input.nextDouble();  // x position of waypoint
@@ -52,10 +52,36 @@ public class Route
       			+ waypoints[w][1] + " "
       			+ waypoints[w][2] + " "
       			+ waypoints[w][3]);
-
       	}
       	System.out.println("loaded route: " + id);
     }
+
+   /**
+   * getId
+   * @return the id of this Route
+   */
+  public int getId()
+  {
+     return id;
+  }
+
+  /**
+   * getWaypointCount
+   * @return the waypointCount of this Route
+   */
+  public int getWaypointCount()
+  {
+     return waypointCount;
+  }
+
+  /**
+   * getWaypoints
+   * @return the waypoints of this Route
+   */
+  public double[][] getWaypoints()
+  {
+     return waypoints;
+  }
 }
 
 

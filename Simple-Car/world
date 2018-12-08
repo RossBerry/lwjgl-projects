@@ -1,4 +1,4 @@
-9     					number of things in the scene
+10   					number of things in the scene
 2						number of routes in the scene
 
 box 					thing 1 - the grass covered ground
@@ -7,11 +7,13 @@ grass
 0           			angle
 0           			speed
 0           			turn rate
+0						route
 100 100 1   			sizes of the box (w, l, h)
 
 box    					thing 2 - the right wall (1 unit wide, 8 units high, 100 units long)
 brick
 99.5 50 4
+0
 0
 0
 0
@@ -23,6 +25,7 @@ brick
 0
 0
 0
+0
 99 1 8
 
 box   					thing 4 - spinning box 1
@@ -31,6 +34,7 @@ kitten
 0
 0
 3
+0
 8 8 8
 
 box   					thing 5 - spinning box 2
@@ -39,6 +43,7 @@ kitten
 0
 0
 3
+0
 8 8 8
 
 box   					thing 6 - a mover
@@ -46,6 +51,7 @@ pup
 0 0 4
 45
 1
+0
 0
 8 8 8
 
@@ -55,6 +61,7 @@ brick
 0
 0
 -1
+0
 14 12 16
 
 octagonal-bipyramid		thing 8 - a spinning octagonal-pyramid
@@ -63,24 +70,35 @@ triangle_blue
 0
 0
 1
+0
 12 12 16
 
-autonomous-car			thing 9 - an autonomous car
+car						thing 9 - an autonomous car using route 1
 hover_taxi_texture_map
-50 50 3
+25 25 3
+0
 0
 0
 1
 8 4 4
 
+car						thing 10 - an autonomous car using route 1
+hover_taxi_texture_map
+12 12 3
+0
+0
+0
+2
+8 4 4
+
 4						route 1
-25 25 3 0
+25 25 3 90
 25 75 3 0
-75 75 3 0
-75 25 3 0
+75 75 3 270
+75 25 3 180
 
 4						route 2
 12 12 3 0
-12 88 3 0
-88 88 3 0
-88 12 3 0
+12 88 3 90
+88 88 3 180
+88 12 3 270
