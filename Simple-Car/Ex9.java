@@ -41,7 +41,7 @@ public class Ex9 extends Basic
   // for map view, use ortho and mapView
   private FloatBuffer orthoBuffer, mapBuffer;
   private ArrayList<Thing> things;
-  private ArrayList<Double[]> routes;
+  private ArrayList<Route> routes;
   private TriList tris;
   private int texture1Loc;
   private Camera camera;
@@ -61,24 +61,20 @@ public class Ex9 extends Basic
     {
       Scanner input = new Scanner(new File(inputFile));
       int thingNumber = input.nextInt();  input.nextLine();
+      System.out.println("There are " + thingNumber + " things in the scene");
       int routeNumber = input.nextInt();  input.nextLine();
+      System.out.println("There are " + routeNumber + " routes");
       things = new ArrayList<Thing>();
       for (int k=0; k<thingNumber; k++) 
       {
         things.add(new Thing(input));           
       }
-      routes = new ArrayList<Double[]>();
+      routes = new ArrayList<Route>();
       for (int k=0; k<routeNumber; k++) 
       {
-        double x = input.nextDouble();
-        double y = input.nextDouble();  
-        double z = input.nextDouble(); 
-        double r = input.nextDouble();
-        input.nextLine();
-        Double[] routeData = {x, y, z, r};
-        routes.add(routeData);           
+        routes.add(new Route(input));           
       }
-        input.close();
+      input.close();
     }
     catch(Exception e) 
     {

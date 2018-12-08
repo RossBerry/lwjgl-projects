@@ -330,6 +330,9 @@ class Pic
     // texture 3:
     addTexture( "triangle_blue" );
 
+    // texture 4:
+    addTexture( "hover_taxi_texture_map" );
+
   }
 
   private static void addTexture( String name ) {

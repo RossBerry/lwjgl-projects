@@ -246,7 +246,7 @@ public class Thing {
                        new Vertex(0.75*w, -0.75*l, 0, 0, 0),
                        new Vertex(w, 0, 0, 1, 0)));
       } 
-      else if(kind.equals("car"))
+      else if(kind.equals("autonomous-car"))
       {
         // get dimensions
         double w = input.nextDouble() /2;  // along x
@@ -254,60 +254,60 @@ public class Thing {
         double h = input.nextDouble() /2;  // along z
         input.nextLine();
         modelTris = new ArrayList<Triangle>();
-        // front face
+        // front face (right side of car)
         modelTris.add( new Triangle( texture, 
-                       new Vertex( -w, -l, -h, 0, 0 ),
-                       new Vertex( w, -l, -h, 1, 0 ),
-                       new Vertex( w, -l, h, 1, 1)));
+                       new Vertex( -w, -l, -h, 0.2, 0 ),
+                       new Vertex( w, -l, -h, 0.6, 0 ),
+                       new Vertex( w, -l, h, 0.6, 0.5)));
         modelTris.add( new Triangle( texture, 
-                       new Vertex( -w, -l, -h, 0, 0 ),
-                       new Vertex( w, -l, h, 1, 1 ),
-                       new Vertex( -w, -l, h, 0, 1)));
-        // right face
+                       new Vertex( -w, -l, -h, 0.2, 0 ),
+                       new Vertex( w, -l, h, 0.6, 0.5 ),
+                       new Vertex( -w, -l, h, 0.2, 0.5)));
+        // right face (front of car)
         modelTris.add( new Triangle( texture, 
-                       new Vertex( w, -l, -h, 0, 0 ),
-                       new Vertex( w, l, -h, 1, 0 ),
-                       new Vertex( w, l, h, 1, 1)));
+                       new Vertex( w, -l, -h, 0, 0.5 ),
+                       new Vertex( w, l, -h, 0.2, 0.5 ),
+                       new Vertex( w, l, h, 0.2, 1)));
         modelTris.add( new Triangle( texture, 
-                       new Vertex( w, -l, -h, 0, 0 ),
-                       new Vertex( w, l, h, 1, 1 ),
+                       new Vertex( w, -l, -h, 0, 0.5 ),
+                       new Vertex( w, l, h, 0.2, 1 ),
                        new Vertex( w, -l, h, 0, 1)));
-        // back face
+        // back face (left side of car)
         modelTris.add( new Triangle( texture, 
-                       new Vertex( w, l, -h, 0, 0 ),
-                       new Vertex( -w, l, -h, 1, 0 ),
-                       new Vertex( -w, l, h, 1, 1)));
+                       new Vertex( w, l, -h, 0.2, 0.5 ),
+                       new Vertex( -w, l, -h, 0.6, 0.5 ),
+                       new Vertex( -w, l, h, 0.6, 1)));
         modelTris.add( new Triangle( texture, 
-                       new Vertex( w, l, -h, 0, 0 ),
-                       new Vertex( -w, l, h, 1, 1 ),
-                       new Vertex( w, l, h, 0, 1)));
-        // left face
+                       new Vertex( w, l, -h, 0.2, 0.5 ),
+                       new Vertex( -w, l, h, 0.6, 1 ),
+                       new Vertex( w, l, h, 0.2, 1)));
+        // left face (back of car)
         modelTris.add( new Triangle( texture, 
-                       new Vertex( -w, l, -h, 0, 0 ),
-                       new Vertex( -w, -l, -h, 1, 0 ),
-                       new Vertex( -w, -l, h, 1, 1)));
+                       new Vertex( -w, l, -h, 0.2, 0 ),
+                       new Vertex( -w, -l, -h, 0, 0 ),
+                       new Vertex( -w, -l, h, 0, 0.5)));
         modelTris.add( new Triangle( texture, 
-                       new Vertex( -w, l, -h, 0, 0 ),
-                       new Vertex( -w, -l, h, 1, 1 ),
-                       new Vertex( -w, l, h, 0, 1)));
-        // top face
+                       new Vertex( -w, l, -h, 0.2, 0 ),
+                       new Vertex( -w, -l, h, 0, 0.5 ),
+                       new Vertex( -w, l, h, 0.2, 0.5)));
+        // top face (top of car)
         modelTris.add( new Triangle( texture, 
-                       new Vertex( -w, -l, h, 0, 0 ),
-                       new Vertex( w, -l, h, 1, 0 ),
+                       new Vertex( -w, -l, h, 0.6, 0.5 ),
+                       new Vertex( w, -l, h, 1, 0.5 ),
                        new Vertex( w, l, h, 1, 1)));
         modelTris.add( new Triangle( texture, 
-                       new Vertex( -w, -l, h, 0, 0 ),
+                       new Vertex( -w, -l, h, 0.6, 0.5 ),
                        new Vertex( w, l, h, 1, 1 ),
-                       new Vertex( -w, l, h, 0, 1)));;
-        // bottom face
+                       new Vertex( -w, l, h, 0.6, 1)));;
+        // bottom face (bottom of car)
         modelTris.add( new Triangle( texture, 
-                       new Vertex( -w, l, -h, 0, 0 ),
-                       new Vertex( w, l, -h, 1, 0 ),
-                       new Vertex( w, -l, -h, 1, 1)));
+                       new Vertex( -w, l, -h, 0.6, 0.5 ),
+                       new Vertex( w, l, -h, 1, 0.5 ),
+                       new Vertex( w, -l, -h, 1, 0)));
         modelTris.add( new Triangle( texture, 
-                       new Vertex( -w, l, -h, 0, 0 ),
-                       new Vertex( w, -l, -h, 1, 1 ),
-                       new Vertex( -w, -l, -h, 0, 1)));
+                       new Vertex( -w, l, -h, 0.6, 0.5 ),
+                       new Vertex( w, -l, -h, 1, 0 ),
+                       new Vertex( -w, -l, -h, 0.6, 0)));
       }
   } // Thing constructor
 
