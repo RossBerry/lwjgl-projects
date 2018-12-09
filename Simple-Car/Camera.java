@@ -77,6 +77,12 @@ public class Camera {
      return azi;
    }
 
+   public void setPosition(Triple newPosition)
+   {
+     e = newPosition;
+     update();
+   }
+
    public void shift( double dx, double dy, double dz ) {
        e = e.add( new Triple(dx,dy,dz) );
        update();

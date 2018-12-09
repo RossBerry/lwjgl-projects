@@ -1,4 +1,4 @@
-12   					number of things in the scene
+18   					number of things in the scene
 3						number of routes in the scene
 
 box 					thing 1 - the grass covered ground
@@ -51,37 +51,97 @@ brick
 0
 99 1 16
 
-hexagonal-bipyramid		thing 6 - a spinning hexagonal-pyramid
-brick
+box     				thing 6 - wooden stand
+wood
+1 2
+30 30 1
+0
+0
+0
+0
+1 1 2 
+
+box     				thing 7 - wooden stand
+wood
+1 2
+30 70 1
+0
+0
+0
+0
+1 1 2 
+
+box     				thing 8 - wooden stand
+wood
+1 2
+70 70 1
+0
+0
+0
+0
+1 1 2 
+
+box     				thing 9 - wooden stand
+wood
+1 2
+70 30 1
+0
+0
+0
+0
+1 1 2
+
+hexagonal-bipyramid		thing 10 - a spinning hexagonal-pyramid
+blue_triangle
 1 1
-25 50 8
+70 70 6
 0
 0
 -1
 0
-14 12 16
+7 6 8
 
-octagonal-bipyramid		thing 7 - a spinning octagonal-pyramid
-triangle_blue
+hexagonal-bipyramid		thing 11 - a spinning hexagonal-pyramid
+blue_triangle
 1 1
-75 50 8
+30 30 6
+0
+0
+-1
+0
+7 6 8
+
+octagonal-bipyramid		thing 12 - a spinning octagonal-pyramid
+blue_triangle
+1 1
+70 30 6
 0
 0
 1
 0
-12 12 16
+6 6 8
 
-car					thing 8 - an autonomous car that drives in
+octagonal-bipyramid		thing 13 - a spinning octagonal-pyramid
+blue_triangle
+1 1
+30 70 6
+0
+0
+1
+0
+6 6 8
+
+car						thing 14 - an autonomous car that drives in
 hover_taxi_texture_map        a circle
 1 1
-50 75 1.5
+30 76 1.5
 0
 0.3
 -3
 0
 6 3 3
 
-car						thing 9 - an autonomous car using route 1
+car						thing 15 - an autonomous car using route 1
 hover_taxi_texture_map
 1 1
 10 10 1.5
@@ -91,7 +151,7 @@ hover_taxi_texture_map
 1
 6 3 3
 
-car						thing 10 - an autonomous car using route 2
+car						thing 16 - an autonomous car using route 2
 hover_taxi_texture_map
 1 1
 15 15 1.5
@@ -101,21 +161,21 @@ hover_taxi_texture_map
 2
 6 3 3
 
-car						thing 11 - an autonomous car using route 3
+car						thing 17 - an autonomous car using route 3
 hover_taxi_texture_map
 1 1
-25 25 1.5
+40 40 1.5
 45
 0.5
 5
 3
 6 3 3
 
-player					thing 12 - an autonomous car using route 3
+player					thing 18 - a car controlled by the player
 hover_taxi_texture_map
 1 1
-50 25 1.5
-90
+95 5 1.5
+135
 0
 0
 0
@@ -134,5 +194,5 @@ hover_taxi_texture_map
 15 85 1.5 270
 
 2						route 3
-25 25 1.5 45
-75 75 1.5 225
+40 40 1.5 45
+60 60 1.5 225

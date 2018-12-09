@@ -134,54 +134,54 @@ public class Thing {
         modelTris = new ArrayList<Triangle>();
         // top hexagonal-pyramid
         modelTris.add( new Triangle( texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(w, 0, 0, s, 0),
-                       new Vertex(h/2, l, 0, s, t)));
+                       new Vertex(0, 0, h, 0.5*s, t),
+                       new Vertex(w, 0, 0, 0, 0),
+                       new Vertex(h/2, l, 0, s, 0)));
         modelTris.add( new Triangle( texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(h/2, l, 0, s, 0),
-                       new Vertex(-h/2, l, 0, s, t)));
+                       new Vertex(0, 0, h, 0.5*s, t),
+                       new Vertex(h/2, l, 0, 0, 0),
+                       new Vertex(-h/2, l, 0, s, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(-h/2, l, 0, s, 0),
-                       new Vertex(-w, 0, 0, s, t)));
+                       new Vertex(0, 0, h, 0.5*s, t),
+                       new Vertex(-h/2, l, 0, 0, 0),
+                       new Vertex(-w, 0, 0, s, 0)));
         modelTris.add( new Triangle( texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(-w, 0, 0, s, 0),
-                       new Vertex(-h/2, -l, 0, s, t)));
+                       new Vertex(0, 0, h, 0.5*s, t),
+                       new Vertex(-w, 0, 0, 0, 0),
+                       new Vertex(-h/2, -l, 0, s, 0)));
         modelTris.add( new Triangle( texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(-h/2, -l, 0, s, 0),
-                       new Vertex(h/2, -l, 0, s, t)));
+                       new Vertex(0, 0, h, 0.5*s, t),
+                       new Vertex(-h/2, -l, 0, 0, 0),
+                       new Vertex(h/2, -l, 0, s, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, h, 0, 0),
-                       new Vertex(h/2, -l, 0, s, 0),
-                       new Vertex(w, 0, 0, s, t)));
+                       new Vertex(0, 0, h, 0.5*s, t),
+                       new Vertex(h/2, -l, 0, 0, 0),
+                       new Vertex(w, 0, 0, s, 0)));
         // bottom hexagonal-pyramid
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(w, 0, 0, s, 0),
-                       new Vertex(h/2, l, 0, s, t)));
+                       new Vertex(0, 0, -h, 0.5*s, t),
+                       new Vertex(w, 0, 0, 0, 0),
+                       new Vertex(h/2, l, 0, s, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(h/2, l, 0, s, 0),
-                       new Vertex(-h/2, l, 0, s, t)));
+                       new Vertex(0, 0, -h, 0.5*s, t),
+                       new Vertex(h/2, l, 0, 0, 0),
+                       new Vertex(-h/2, l, 0, s, 0)));
         modelTris.add( new Triangle( texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(-h/2, l, 0, s, 0),
-                       new Vertex(-w, 0, 0, s, t)));
+                       new Vertex(0, 0, -h, 0.5*s, t),
+                       new Vertex(-h/2, l, 0, 0, 0),
+                       new Vertex(-w, 0, 0, s, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(-w, 0, 0, s, 0),
-                       new Vertex(-h/2, -l, 0, s, t)));
+                       new Vertex(0, 0, -h, 0.5*s, t),
+                       new Vertex(-w, 0, 0, 0, 0),
+                       new Vertex(-h/2, -l, 0, s, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(-h/2, -l, 0, s, 0),
-                       new Vertex(h/2, -l, 0, s, t)));
+                       new Vertex(0, 0, -h, 0.5*s, t),
+                       new Vertex(-h/2, -l, 0, 0, 0),
+                       new Vertex(h/2, -l, 0, s, 0)));
         modelTris.add( new Triangle(texture, 
-                       new Vertex(0, 0, -h, 0, 0),
-                       new Vertex(h/2, -l, 0, s, 0),
-                       new Vertex(w, 0, 0, s, t)));
+                       new Vertex(0, 0, -h, 0.5*s, t),
+                       new Vertex(h/2, -l, 0, 0, 0),
+                       new Vertex(w, 0, 0, s, 0)));
       }
       else if(kind.equals("octagonal-bipyramid"))
       {
@@ -423,6 +423,15 @@ public class Thing {
   }
 
   /**
+   * getPosition
+   * @return the position of this Thing's route
+   */
+  public Triple getPosition()
+  {
+    return position;
+  }
+
+  /**
    * setNextWaypoint
    * @param waypoint the new next waypoint for this Thing
    */
@@ -447,6 +456,15 @@ public class Thing {
   public void setPosition(Triple newPosition)
   {
     position = newPosition;
+  }
+
+  /**
+   * setSpeed
+   * @param speed the new speed for this Thing
+   */
+  public void setSpeed(double newSpeed)
+  {
+    speed = newSpeed;
   }
 
   /**
@@ -536,7 +554,7 @@ public class Thing {
       // update the position
       double ang = Math.toRadians(angle);
       Triple v = new Triple( Math.cos(ang), Math.sin(ang), 0).mult(speed);
-      position = position.add(v); 
+      position = position.add(v);
     }
   }
 }

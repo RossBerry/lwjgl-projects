@@ -322,9 +322,12 @@ class Pic
     addTexture( "brick" );
 
     // texture 2:
-    addTexture( "triangle_blue" );
+    addTexture( "wood" );
 
     // texture 3:
+    addTexture( "blue_triangle" );
+
+    // texture 4:
     addTexture( "hover_taxi_texture_map" );
 
   }

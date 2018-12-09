@@ -70,6 +70,13 @@ public class Ex9 extends Basic
       {
         things.add(new Thing(input));           
       }
+      for (int k=0; k<things.size(); k++)
+      {
+        if (things.get(k).getKind().equals("player"))
+        {
+          player = things.get(k);
+        }
+      }
       routes = new ArrayList<Route>();
       for (int k=0; k<routeNumber; k++) 
       {
@@ -83,7 +90,7 @@ public class Ex9 extends Basic
       System.exit(1);
     }
     // place camera somewhere at start
-    camera = new Camera(-.1, .1, -.1, .1, 0.5, 300, new Triple(50,25,8), 90, 0); 
+    camera = new Camera(-.1, .1, -.1, .1, 0.5, 300, new Triple(95,5,3), 135, 0);
   }
 
   /**
@@ -175,46 +182,58 @@ public class Ex9 extends Basic
         final double amount = 1;  // amount to move
         final double angAmount = 5;
         // move the eye point of the camera
-        if ( code == GLFW_KEY_X && mods == 0 )
+        if ( code == GLFW_KEY_G && mods == 0 )
         { // x:  move left
-          camera.shift( -amount, 0, 0 );
+          player.setSpeed(0.2);
         }
-        else if ( code == GLFW_KEY_X && mods == 1 )
-        { // X:  move right
-          camera.shift( amount, 0, 0 );
+        else if ( code == GLFW_KEY_S && mods == 0 )
+        { // x:  move left
+          player.setSpeed(0);
         }
-        else if ( code == GLFW_KEY_Y && mods == 0 )
-        { // y:  move smaller in y direction
-          camera.shift( 0, -amount, 0 );
-        }
-        else if ( code == GLFW_KEY_Y && mods == 1 )
-        { // Y:  move bigger in y direction
-          camera.shift( 0, amount, 0 );
-        }
-        else if ( code == GLFW_KEY_Z && mods == 0 ) 
-        { // z:  move smaller in z direction
-          camera.shift( 0, 0, -amount );
-        }
-        else if ( code == GLFW_KEY_Z && mods == 1 ) 
-        { // Z:  move bigger in Z direction
-          camera.shift( 0, 0, amount );
-        }
+        //else if ( code == GLFW_KEY_X && mods == 0 )
+        //{ // x:  move left
+          //camera.shift( -amount, 0, 0 );
+        //}
+        //else if ( code == GLFW_KEY_X && mods == 1 )
+        //{ // X:  move right
+          //camera.shift( amount, 0, 0 );
+        //}
+        //else if ( code == GLFW_KEY_Y && mods == 0 )
+        //{ // y:  move smaller in y direction
+          //camera.shift( 0, -amount, 0 );
+        //}
+        //else if ( code == GLFW_KEY_Y && mods == 1 )
+        //{ // Y:  move bigger in y direction
+          //camera.shift( 0, amount, 0 );
+        //}
+        //else if ( code == GLFW_KEY_Z && mods == 0 ) 
+        //{ // z:  move smaller in z direction
+          //camera.shift( 0, 0, -amount );
+        //}
+        //else if ( code == GLFW_KEY_Z && mods == 1 ) 
+        //{ // Z:  move bigger in Z direction
+          //camera.shift( 0, 0, amount );
+        //}
         // change angles //
-        else if ( code == GLFW_KEY_R && mods == 0 ) 
+        else if (code == GLFW_KEY_R && mods == 0 ||
+                 code == GLFW_KEY_RIGHT && mods == 0) 
         { // r:  rotate clockwise
           camera.rotate( -angAmount );
         }
-        else if ( code == GLFW_KEY_R && mods == 1 )
+        else if (code == GLFW_KEY_L && mods == 0 ||
+                 code == GLFW_KEY_LEFT && mods == 0) 
         { // R: rotate counterclockwise
           camera.rotate( angAmount );
         }
-        else if ( code == GLFW_KEY_T && mods == 0 )
+        else if (code == GLFW_KEY_D && mods == 0 ||
+                 code == GLFW_KEY_DOWN && mods == 0) 
         { // t:  tilt downward
           camera.tilt( -angAmount );
         }
-        else if ( code == GLFW_KEY_T && mods == 1 )
+        else if (code == GLFW_KEY_U && mods == 0 ||
+                 code == GLFW_KEY_UP && mods == 0) 
         { // T: tilt upward
-          camera.tilt( angAmount );
+          camera.tilt(angAmount);
         }
       } // input event is a key
       else if ( info.kind == 'm' ) 
@@ -233,17 +252,10 @@ public class Ex9 extends Basic
    */
   protected void update()
   {
+    player.setAngle(camera.getAngle());
     // give each thing a chance to update itself
     for (int k=0; k<things.size(); k++)
     {
-      if (things.get(k).getKind().equals("player"))
-      {
-        player = things.get(k);
-        Triple offset = new Triple(0,0,-3);
-        player.setPosition(camera.getPosition().add(offset));
-        player.setAngle(camera.getAngle());
-      }
-
       int routeId = things.get(k).getRouteId();
       System.out.println("update things # " + k + " with id " + things.get(k).getId());
       if (routeId > 0)
@@ -275,6 +287,8 @@ public class Ex9 extends Basic
       }
       things.get(k).update();
     }
+    Triple offset = new Triple(0,0,2.5);
+    camera.setPosition(player.getPosition().add(offset));
   }
  
   protected void display()
