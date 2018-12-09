@@ -1,5 +1,5 @@
-9   					number of things in the scene
-2						number of routes in the scene
+10   					number of things in the scene
+3						number of routes in the scene
 
 box 					thing 1 - the grass covered ground
 grass
@@ -74,31 +74,45 @@ triangle_blue
 car						thing 8 - an autonomous car using route 1
 hover_taxi_texture_map
 1 1
-25 25 3
-0
+10 10 3
+90
 0.5
+5
 1
-1
-8 4 4
+6 3 3
 
-car						thing 9 - an autonomous car using route 1
+car						thing 9 - an autonomous car using route 2
 hover_taxi_texture_map
 1 1
-12 12 3
+15 15 3
 0
 0.5
-1
+5
 2
-8 4 4
+6 3 3
+
+car						thing 10 - an autonomous car using route 3
+hover_taxi_texture_map
+1 1
+25 25 3
+45
+0.5
+5
+3
+6 3 3
 
 4						route 1
-25 25 3 90
-25 75 3 0
-75 75 3 270
-75 25 3 180
+10 10 3 90
+10 90 3 0
+90 90 3 270
+90 10 3 180
 
 4						route 2
-12 12 3 0
-88 12 3 90
-88 88 3 180
-12 88 3 270
+15 15 3 0
+85 15 3 90
+85 85 3 180
+15 85 3 270
+
+2						route 3
+25 25 3 45
+75 75 3 225

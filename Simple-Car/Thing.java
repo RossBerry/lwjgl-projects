@@ -413,7 +413,7 @@ public class Thing {
         }
         if (angle >= 360)
         {
-           angle -= 360;
+          angle -= 360;
         }
         return false;
       }
