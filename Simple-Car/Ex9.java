@@ -25,7 +25,7 @@ public class Ex9 extends Basic
    */
   public static void main(String[] args)
   {
-    Ex9 app = new Ex9("Exercise 9", 1920, 1000, 30, args[0]);
+    Ex9 app = new Ex9("Exercise 9", 1000, 500, 30, args[0]);
     app.start();
   } // main
 
