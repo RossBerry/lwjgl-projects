@@ -432,6 +432,24 @@ public class Thing {
   }
 
   /**
+   * setAngle
+   * @param angle the new angle for this Thing
+   */
+  public void setAngle(double newAngle)
+  {
+    angle = newAngle;
+  }
+
+  /**
+   * setPosition
+   * @param position the new position for this Thing
+   */
+  public void setPosition(Triple newPosition)
+  {
+    position = newPosition;
+  }
+
+  /**
    * sendTriangles
    * @param tris list of triangles that make up this thing
    */

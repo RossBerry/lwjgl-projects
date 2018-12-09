@@ -67,6 +67,16 @@ public class Camera {
       return lBuff;
    }
 
+   public Triple getPosition()
+   {
+     return e;
+   }
+
+   public double getAngle()
+   {
+     return azi;
+   }
+
    public void shift( double dx, double dy, double dz ) {
        e = e.add( new Triple(dx,dy,dz) );
        update();

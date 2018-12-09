@@ -1,4 +1,4 @@
-11   					number of things in the scene
+12   					number of things in the scene
 3						number of routes in the scene
 
 box 					thing 1 - the grass covered ground
@@ -109,6 +109,16 @@ hover_taxi_texture_map
 0.5
 5
 3
+6 3 3
+
+player					thing 12 - an autonomous car using route 3
+hover_taxi_texture_map
+1 1
+50 25 1.5
+90
+0
+0
+0
 6 3 3
 
 4						route 1

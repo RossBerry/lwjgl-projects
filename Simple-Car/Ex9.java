@@ -45,6 +45,7 @@ public class Ex9 extends Basic
   private TriList tris;
   private int texture1Loc;
   private Camera camera;
+  private Thing player;
  
 
   // construct basic application with given title, pixel width and height
@@ -82,7 +83,7 @@ public class Ex9 extends Basic
       System.exit(1);
     }
     // place camera somewhere at start
-    camera = new Camera(-.1, .1, -.1, .1, 0.5, 300, new Triple(50,25,3), 90, 0); 
+    camera = new Camera(-.1, .1, -.1, .1, 0.5, 300, new Triple(50,25,8), 90, 0); 
   }
 
   /**
@@ -235,6 +236,14 @@ public class Ex9 extends Basic
     // give each thing a chance to update itself
     for (int k=0; k<things.size(); k++)
     {
+      if (things.get(k).getKind().equals("player"))
+      {
+        player = things.get(k);
+        Triple offset = new Triple(0,0,-3);
+        player.setPosition(camera.getPosition().add(offset));
+        player.setAngle(camera.getAngle());
+      }
+
       int routeId = things.get(k).getRouteId();
       System.out.println("update things # " + k + " with id " + things.get(k).getId());
       if (routeId > 0)
