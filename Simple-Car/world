@@ -1,4 +1,4 @@
-18   					number of things in the scene
+17   					number of things in the scene
 3						number of routes in the scene
 
 box 					thing 1 - the grass covered ground
@@ -131,17 +131,7 @@ blue_triangle
 0
 6 6 8
 
-car						thing 14 - an autonomous car that drives in
-hover_taxi_texture_map        a circle
-1 1
-30 76 1.5
-0
-0.3
--3
-0
-6 3 3
-
-car						thing 15 - an autonomous car using route 1
+car						thing 14 - an autonomous car using route 1
 hover_taxi_texture_map
 1 1
 10 10 1.5
@@ -151,7 +141,7 @@ hover_taxi_texture_map
 1
 6 3 3
 
-car						thing 16 - an autonomous car using route 2
+car						thing 15 - an autonomous car using route 2
 hover_taxi_texture_map
 1 1
 15 15 1.5
@@ -161,7 +151,7 @@ hover_taxi_texture_map
 2
 6 3 3
 
-car						thing 17 - an autonomous car using route 3
+car						thing 6 - an autonomous car using route 3
 hover_taxi_texture_map
 1 1
 40 40 1.5
@@ -171,7 +161,7 @@ hover_taxi_texture_map
 3
 6 3 3
 
-player					thing 18 - a car controlled by the player
+player					thing 17 - a car controlled by the player
 hover_taxi_texture_map
 1 1
 95 5 1.5
