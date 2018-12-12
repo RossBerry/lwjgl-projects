@@ -1,5 +1,5 @@
 # LWJGL-Examples
-Example projects using the Light Weight Java Gaming Library (LWJGL) and Java.
+Example projects using the Light Weight Java Gaming Library (LWJGL).
 
 
 ## Requirements:
@@ -10,8 +10,7 @@ All projects require [Java](https://www.java.com/en/download/) and [LWJGL](https
 - Download LWJGL 3.2 zip file containing the GLFW and OpenGL libraries
 - Unzip LWJGL jar files into a folder named LWJGL
 - Place LWJGL folder in LWJGL-Examples folder alongside project folders
-- Run j.bat with project's main java source file and input file as arguments
-  To run Hover-Taxi project for example, open console in project folder and enter the following:
+- Run j.bat with project's main java source file and input file as arguments. To run Hover-Taxi project for example, open console in project folder and enter the following:
   
       ./j HoverTaxi world
       
