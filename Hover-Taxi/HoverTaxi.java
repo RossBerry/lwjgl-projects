@@ -1,5 +1,5 @@
 /**  
- * Ex9
+ * HoverTaxi
  *
  * @author Kenneth Berry
 */
@@ -17,7 +17,7 @@ import java.io.*;
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
 
-public class Ex9 extends Basic 
+public class HoverTaxi extends Basic 
 {
 
   /**
@@ -25,7 +25,7 @@ public class Ex9 extends Basic
    */
   public static void main(String[] args)
   {
-    Ex9 app = new Ex9("Exercise 9", 1000, 500, 30, args[0]);
+    HoverTaxi app = new HoverTaxi("Exercise 9", 1000, 500, 30, args[0]);
     app.start();
   } // main
 
@@ -50,7 +50,7 @@ public class Ex9 extends Basic
 
   // construct basic application with given title, pixel width and height
   // of drawing area, and frames per second
-  public Ex9( String appTitle, int pw, int ph, int fps, String inputFile )
+  public HoverTaxi( String appTitle, int pw, int ph, int fps, String inputFile )
   {
     super( appTitle, pw, ph, (long) ((1.0/fps)*1000000000) );
  
@@ -344,4 +344,4 @@ public class Ex9 extends Basic
       Util.error("after draw arrays");
     } // draw triangles for pic k
   } // display
-} // Ex9
+} // HoverTaxi
