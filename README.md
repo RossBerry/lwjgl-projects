@@ -14,6 +14,10 @@ All projects require [Java](https://www.java.com/en/download/) and [LWJGL](https
   To run Hover-Taxi project for example, open console in project folder and enter the following:
   
       ./j HoverTaxi world
+      
+- If you want to change the textures used in a project, the new textures must be converted from a jpg before use.  To use an image named new_image.jpg for example, put the image in the project's Picture folder and enter the following in the console:
+
+      ./j Convert new_image
 
 
 ## Projects:
