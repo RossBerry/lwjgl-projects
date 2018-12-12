@@ -1,5 +1,5 @@
-# ignore LWJGL directory
+# ignore the following directories
 LWJGL/
 
-# ignore all compiled class files
+# ignore compiled files
 *.class

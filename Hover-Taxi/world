@@ -1,0 +1,188 @@
+17   					number of things in the scene
+3						number of routes in the scene
+
+box 					thing 1 - the grass covered ground
+grass
+12 12
+50 50 -0.5  			location of the center of the ground box
+0           			angle
+0           			speed
+0           			turn rate
+0						route
+100 100 1   			sizes of the box (w, l, h)
+
+box     				thing 2 - the right wall (1 unit wide, 8 units high, 100 units long)
+brick
+10 3
+99.5 50 8
+0
+0
+0
+0
+1 100 16
+
+box     				thing 3 - the back wall
+brick
+10 3
+49.5 99.5 8
+0
+0
+0
+0
+99 1 16
+
+box     				thing 4 - the left wall
+brick
+10 3
+0 50 8
+0
+0
+0
+0
+1 100 16
+
+box     				thing 5 - the front wall
+brick
+10 3
+49.5 0 8
+0
+0
+0
+0
+99 1 16
+
+box     				thing 6 - wooden stand
+wood
+1 2
+30 30 1
+0
+0
+0
+0
+1 1 2 
+
+box     				thing 7 - wooden stand
+wood
+1 2
+30 70 1
+0
+0
+0
+0
+1 1 2 
+
+box     				thing 8 - wooden stand
+wood
+1 2
+70 70 1
+0
+0
+0
+0
+1 1 2 
+
+box     				thing 9 - wooden stand
+wood
+1 2
+70 30 1
+0
+0
+0
+0
+1 1 2
+
+hexagonal-bipyramid		thing 10 - a spinning hexagonal-pyramid
+blue_triangle
+1 1
+70 70 6
+0
+0
+-1
+0
+7 6 8
+
+hexagonal-bipyramid		thing 11 - a spinning hexagonal-pyramid
+blue_triangle
+1 1
+30 30 6
+0
+0
+-1
+0
+7 6 8
+
+octagonal-bipyramid		thing 12 - a spinning octagonal-pyramid
+blue_triangle
+1 1
+70 30 6
+0
+0
+1
+0
+6 6 8
+
+octagonal-bipyramid		thing 13 - a spinning octagonal-pyramid
+blue_triangle
+1 1
+30 70 6
+0
+0
+1
+0
+6 6 8
+
+car						thing 14 - an autonomous car using route 1
+hover_taxi_texture_map
+1 1
+10 10 1.5
+90
+0.5
+5
+1
+6 3 3
+
+car						thing 15 - an autonomous car using route 2
+hover_taxi_texture_map
+1 1
+15 15 1.5
+0
+0.5
+5
+2
+6 3 3
+
+car						thing 6 - an autonomous car using route 3
+hover_taxi_texture_map
+1 1
+40 40 1.5
+45
+0.5
+5
+3
+6 3 3
+
+player					thing 17 - a car controlled by the player
+hover_taxi_texture_map
+1 1
+95 5 1.5
+135
+0
+0
+0
+6 3 3
+
+4						route 1
+10 10 1.5 90
+10 90 1.5 0
+90 90 1.5 270
+90 10 1.5 180
+
+4						route 2
+15 15 1.5 0
+85 15 1.5 90
+85 85 1.5 180
+15 85 1.5 270
+
+2						route 3
+40 40 1.5 45
+60 60 1.5 225
